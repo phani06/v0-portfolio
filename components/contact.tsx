@@ -47,14 +47,14 @@ export default function Contact() {
       console.log("Email successfully sent!", result.text)
       setSubmitStatus({
         success: true,
-        message: "$ Message sent successfully! Status: 200 OK",
+        message: "$ Message sent successfully!",
       })
       setFormData({ name: "", email: "", message: "" })
     } catch (error) {
       console.error("Failed to send email:", error)
       setSubmitStatus({
         success: false,
-        message: "$ Error sending message. Please try again later. Status: 500",
+        message: "$ Error sending message. Please try again later.",
       })
     } finally {
       setIsSubmitting(false)

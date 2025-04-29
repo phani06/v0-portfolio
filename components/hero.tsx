@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowDown, Code, Terminal, User } from "lucide-react"
+import { ArrowDown, Code, Terminal } from "lucide-react"
+import Image from "next/image"
 
 export default function Hero() {
   return (
@@ -48,14 +49,13 @@ export default function Hero() {
           </div>
           <div className="flex items-center justify-center">
             <div className="relative aspect-square overflow-hidden rounded-full border-4 border-primary/20 bg-muted/20 w-[250px] h-[250px] md:w-[400px] md:h-[400px] tech-card glow">
-              {/* Temporary placeholder with your initials until you can add your real photo */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-                <User className="h-16 w-16 text-primary mb-2" />
-                <div className="text-2xl font-bold text-primary">PT</div>
-                <div className="text-xs text-muted-foreground mt-2 max-w-[80%] text-center">
-                  Add your photo after deployment
-                </div>
-              </div>
+              <Image
+                src="/images/profile-photo.jpg"
+                alt="Phanindhar Telukuntla"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
