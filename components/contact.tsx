@@ -1,22 +1,26 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, MapPin, Terminal, Send } from "lucide-react"
+import { Mail, MapPin, Terminal, Send, AlertCircle, CheckCircle } from "lucide-react"
+import emailjs from "emailjs-com"
 
 export default function Contact() {
+  const form = useRef<HTMLFormElement>(null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{
+    success: boolean
+    message: string
+  } | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -25,17 +29,36 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!form.current) return
+
     setIsSubmitting(true)
+    setSubmitStatus(null)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      // Replace these with your actual EmailJS service ID, template ID, and user ID
+      const result = await emailjs.sendForm(
+        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
+        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        form.current,
+        "YOUR_USER_ID", // Replace with your EmailJS user ID
+      )
 
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    setFormData({ name: "", email: "", message: "" })
-
-    // Reset success message after 5 seconds
-    setTimeout(() => setSubmitSuccess(false), 5000)
+      console.log("Email successfully sent!", result.text)
+      setSubmitStatus({
+        success: true,
+        message: "$ Message sent successfully! Status: 200 OK",
+      })
+      setFormData({ name: "", email: "", message: "" })
+    } catch (error) {
+      console.error("Failed to send email:", error)
+      setSubmitStatus({
+        success: false,
+        message: "$ Error sending message. Please try again later. Status: 500",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -90,7 +113,7 @@ export default function Contact() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <label
                     htmlFor="name"
@@ -155,8 +178,17 @@ export default function Contact() {
                     </span>
                   )}
                 </Button>
-                {submitSuccess && (
-                  <div className="text-accent text-center font-mono">$ Message sent successfully! Status: 200 OK</div>
+                {submitStatus && (
+                  <div
+                    className={`flex items-center text-${submitStatus.success ? "accent" : "destructive"} text-center font-mono`}
+                  >
+                    {submitStatus.success ? (
+                      <CheckCircle className="h-4 w-4 mr-2" />
+                    ) : (
+                      <AlertCircle className="h-4 w-4 mr-2" />
+                    )}
+                    {submitStatus.message}
+                  </div>
                 )}
               </form>
             </CardContent>
