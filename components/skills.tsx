@@ -93,11 +93,11 @@ export default function Skills() {
                   "Python",
                   "Java",
                   "SQL",
-                  "MongoDB",
+                  "C++",
+                  "C",
                   "AWS",
-                  "Docker",
                   "Git",
-                  "REST APIs",
+                  "HTML",
                 ].map((tech, index) => (
                   <div key={tech} className="flex items-center space-x-2">
                     <Code className="h-4 w-4 text-primary" />
