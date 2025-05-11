@@ -17,7 +17,7 @@ const projects = [
     title: "Customer Churn Prediction Model",
     description: "Developed a customer churn prediction model using XGBoost, achieving 92% accuracy and an F1 score of 0.89, reducing churn rates by 15%. Conducted extensive feature engineering and hyperparameter tuning, improving model precision by 12% and recall by 10% across a dataset of over 100,000 customer records.",
     image: "/images/projects/churn.jpg",
-    tags: ["Python", "Sciket-learn", "XGBoost", "Pandas"],
+    tags: ["Python", "Sciket-learn", "XGBoost", "Pandass"],
     liveUrl: "#",
     githubUrl: "#",
     color: "from-secondary/20 to-accent/20",
