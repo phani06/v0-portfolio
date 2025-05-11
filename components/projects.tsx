@@ -8,7 +8,7 @@ const projects = [
     title: "Covid-19-and-Pneumonia-Detection-Using-Chest-X-Rays",
     description:
       "A deep learning model using CNN and ResNet50 was developed to detect pneumonia in COVID-19 patients from chest X-rays, achieving an average accuracy of 93.70%. Techniques like one-hot encoding, dropout, and Adam optimization helped improve performance by reducing training loss and increasing accuracy..",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/projects/covid.jpg",
     tags: ["Python", "Javascript", "HTML", "CSS"],
     githubUrl: "https://github.com/phani06/Covid-19-and-Pneumonia-Dectection-Using-Chest-X-Rays",
     color: "from-primary/20 to-secondary/20",
@@ -16,7 +16,7 @@ const projects = [
   {
     title: "Customer Churn Prediction Model",
     description: "Developed a customer churn prediction model using XGBoost, achieving 92% accuracy and an F1 score of 0.89, reducing churn rates by 15%. Conducted extensive feature engineering and hyperparameter tuning, improving model precision by 12% and recall by 10% across a dataset of over 100,000 customer records.",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/projects/churn.jpg",
     tags: ["Python", "Sciket-learn", "XGBoost", "Pandas"],
     liveUrl: "#",
     githubUrl: "#",
@@ -25,7 +25,7 @@ const projects = [
   {
     title: "SQL Query Generation from Natural Language Questions",
     description: "Developed and deployed a Bi-directional LSTM model that improved query generation speed by 30% and achieved 89.5% accuracy. Led end-to-end project execution, reducing error rates by 15% and ensuring 95% real-world success..",
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/images/projects/bilstm.jpg",
     tags: ["Python", "NLP", "TensorFlow", "SQL"],
     liveUrl: "#",
     githubUrl: "#",
